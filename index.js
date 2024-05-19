@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const circle = document.getElementById("circle");
 
-  const a = 0.01;
+  const a = 0.005;
   const startX = 500;
 
   let moveReq;
@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     circle.setAttribute("cx", x);
     circle.setAttribute("cy", y);
+    drawTail();
+
     if (x > 900) return;
 
     moveReq = requestAnimationFrame(moveCircle);
@@ -34,6 +36,55 @@ document.addEventListener("DOMContentLoaded", () => {
   moveCircle();
   blowCircle();
 });
+
+function drawTail() {
+  const circle = document.getElementById("circle");
+
+  // invisible assistant dots for creating tail
+  const dot_co = document.getElementById("dot-co"); // tail point
+  const dot_cr = document.getElementById("dot-cr"); // right contact to the circle
+  const dot_cl = document.getElementById("dot-cl"); // left contact to the circle
+
+  // two curved lines to be a tail
+  const tail_l = document.getElementById("tail-l");
+  const tail_r = document.getElementById("tail-r");
+
+  // the circle's cennter coordinates and radius
+  const circleX = parseFloat(circle.getAttribute("cx"));
+  const circleY = parseFloat(circle.getAttribute("cy"));
+  const circleR = parseFloat(circle.getAttribute("r"));
+
+  // calculate invisible dot positions
+  const dot_co_x = parseFloat(dot_co.getAttribute("cx"));
+  const dot_co_y = parseFloat(dot_co.getAttribute("cy"));
+  const dot_cr_x = circleX + circleR * Math.cos(Math.PI / 3);
+  const dot_cr_y = circleY + circleR * Math.sin(Math.PI / 3);
+  const dot_cl_x = circleX - circleR;
+  const dot_cl_y = circleY;
+
+  // set dot positions
+  dot_cr.setAttribute("cx", dot_cr_x);
+  dot_cr.setAttribute("cy", dot_cr_y);
+  dot_cl.setAttribute("cx", dot_cl_x);
+  dot_cl.setAttribute("cy", dot_cl_y);
+
+  // control point for left curved line (tail_l)
+  // const controlLX = (dot_cl_x + dot_co_x) / 2;
+  const controlLX = (dot_cl_x + dot_co_x) / 2;
+  const controlLY = dot_cl_y + 130;
+  // control point for right curved line (tail_r)
+  const controlRX = (dot_cr_x + dot_co_x) / 2;
+  const controlRY = dot_cr_y + 80;
+
+  // Construct the path string for the curved line and assistant straight line (CL - CR)
+  const pathStr_l = `M ${dot_cl_x},${dot_cl_y} Q ${controlLX},${controlLY} ${dot_co_x},${dot_co_y}`;
+  const pathStr_r = `M ${dot_co_x},${dot_co_y} Q ${controlRX},${controlRY} ${dot_cr_x},${dot_cr_y}`;
+  const pathStr_assist = `M ${dot_cr_x},${dot_cr_y} L ${dot_cl_x},${dot_cl_y}`;
+
+  // Set the path string to the curved line
+  tail_l.setAttribute("d", pathStr_l);
+  tail_r.setAttribute("d", pathStr_r);
+}
 
 // // Get the circle and dot elements
 // const circle = document.getElementById("myCircle");
