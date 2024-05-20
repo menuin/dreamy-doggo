@@ -1,45 +1,58 @@
+let moveReq;
+let frameCount = 0; // used for calculating control point
+
 document.addEventListener("DOMContentLoaded", () => {
-  const circle = document.getElementById("circle");
+  drawCircle();
+});
 
-  const a = 0.005;
-  const startX = 500;
+function drawCircle() {
+  const svg = document.getElementById("svg");
+  const circle = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "circle"
+  );
 
-  let moveReq;
-  let blowReq;
+  circle.setAttribute("id", "circle");
+  circle.setAttribute("cx", "500"); // initial center coordinate x
+  circle.setAttribute("cy", "400"); // inital center coordinate y
+  circle.setAttribute("r", "0"); // initial radius
+  circle.setAttribute("fill", "transparent");
+  circle.setAttribute("stroke", "black");
 
-  let frameCount = 0;
-
-  function moveCircle() {
-    frameCount++;
-
-    let x = parseFloat(circle.getAttribute("cx")) + 0.5;
-    let y = 400 - a * (x - startX) ** 2;
-
-    circle.setAttribute("cx", x);
-    circle.setAttribute("cy", y);
-    drawTail(frameCount);
-
-    if (x > 900) return;
-
-    moveReq = requestAnimationFrame(moveCircle);
-  }
-
-  function blowCircle() {
-    let r = parseFloat(circle.getAttribute("r")) + 0.3;
-    circle.setAttribute("r", r);
-
-    blowReq = requestAnimationFrame(blowCircle);
-  }
-  function popCircle() {
-    cancelAnimationFrame(moveReq);
-    cancelAnimationFrame(blowReq);
-  }
+  svg.appendChild(circle);
 
   circle.addEventListener("click", popCircle);
 
   moveCircle();
+}
+
+function moveCircle() {
+  const circle = document.getElementById("circle");
+
+  frameCount++;
+
+  const a = 0.005;
+  const startX = 500;
+
+  let x = parseFloat(circle.getAttribute("cx")) + 0.5;
+  let y = 400 - a * (x - startX) ** 2;
+
+  circle.setAttribute("cx", x);
+  circle.setAttribute("cy", y);
   blowCircle();
-});
+  drawTail(frameCount);
+
+  if (x > 630) return;
+
+  moveReq = requestAnimationFrame(moveCircle);
+}
+
+function blowCircle() {
+  const circle = document.getElementById("circle");
+
+  let r = parseFloat(circle.getAttribute("r")) + 0.3;
+  circle.setAttribute("r", r);
+}
 
 function drawTail(frameCount) {
   const circle = document.getElementById("circle");
@@ -54,7 +67,7 @@ function drawTail(frameCount) {
   const tail_r = document.getElementById("tail-r");
   const tail_assist = document.getElementById("tail-assist");
 
-  // the circle's cennter coordinates and radius
+  // the circle's center coordinates and radius
   const circleX = parseFloat(circle.getAttribute("cx"));
   const circleY = parseFloat(circle.getAttribute("cy"));
   const circleR = parseFloat(circle.getAttribute("r"));
@@ -74,7 +87,6 @@ function drawTail(frameCount) {
   dot_cl.setAttribute("cy", dot_cl_y);
 
   // control point for left curved line (tail_l)
-  // const controlLX = (dot_cl_x + dot_co_x) / 2;
   const controlLX = (dot_cl_x + dot_co_x) / 2;
   // const controlLY = dot_cl_y + 130;
   const controlLY = dot_cl_y + 30 * 0.01 * frameCount;
@@ -91,8 +103,30 @@ function drawTail(frameCount) {
   tail_l.setAttribute("d", pathStr_l);
   tail_r.setAttribute("d", pathStr_r);
   tail_assist.setAttribute("d", pathStr_assist);
+
+  // const filledShape = document.getElementById("filledShape");
+  // const compoundPathString = `M ${dot_co_x}, ${dot_co_y} Q ${controlRX},${controlRY} ${dot_cr_x},${dot_cr_y} L ${dot_cl_x},${dot_cl_y} Q ${controlLX},${controlLY} ${dot_co_x},${dot_co_y}`;
+  // filledShape.setAttribute("d", compoundPathString);
 }
 
-// const filledShape = document.getElementById("filledShape");
-// const compoundPathString = `M ${dot_co_x}, ${dot_co_y} Q ${controlRX},${controlRY} ${dot_cr_x},${dot_cr_y} L ${dot_cl_x},${dot_cl_y} Q ${controlLX},${controlLY} ${dot_co_x},${dot_co_y}`;
-// filledShape.setAttribute("d", compoundPathString);
+function popCircle() {
+  const circle = document.getElementById("circle");
+  circle.remove();
+
+  // remove tail
+  const tail_l = document.getElementById("tail-l");
+  const tail_r = document.getElementById("tail-r");
+  const tail_assist = document.getElementById("tail-assist");
+  tail_l.setAttribute("d", "");
+  tail_r.setAttribute("d", "");
+  tail_assist.setAttribute("d", "");
+
+  // reset frame count
+  frameCount = 0;
+
+  setTimeout(() => {
+    drawCircle();
+  }, 1000);
+
+  cancelAnimationFrame(moveReq);
+}
