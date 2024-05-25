@@ -8,3 +8,7 @@ body {
 circle {
   cursor: pointer;
 }
+
+.dot {
+  opacity: 0;
+}
