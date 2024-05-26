@@ -25,7 +25,7 @@ function drawCircle() {
   circle.setAttribute("cy", "400"); // inital center coordinate y
   circle.setAttribute("r", "0"); // initial radius
   // circle.setAttribute("fill", "transparent");
-  circle.setAttribute("fill", "blue");
+  circle.setAttribute("fill", "#C2C2C2");
   // circle.setAttribute("stroke", "black");
 
   svg.appendChild(circle);
@@ -60,7 +60,14 @@ function moveCircle() {
 
   drawTail(frameCount);
 
+  if (y + parseFloat(circle.getAttribute("r")) < 0) {
+    // circle flies off the screen
+    popCircle();
+    return;
+  }
+
   if (x > 630) {
+    // free circle from this point
     speedX = 2;
     cancelAnimationFrame(blowReq);
     freeCircle();
