@@ -7,6 +7,9 @@ let frameCount = 0; // used for calculating control point
 let controlRYvar = 20;
 let speedX = 0.5;
 
+const startCX = 780;
+const startCY = 520;
+
 document.addEventListener("DOMContentLoaded", () => {
   drawCircle();
 });
@@ -21,11 +24,12 @@ function drawCircle() {
   );
 
   circle.setAttribute("id", "circle");
-  circle.setAttribute("cx", "500"); // initial center coordinate x
-  circle.setAttribute("cy", "400"); // inital center coordinate y
+  circle.setAttribute("cx", startCX); // initial center coordinate x
+  circle.setAttribute("cy", startCY); // inital center coordinate y
   circle.setAttribute("r", "0"); // initial radius
   // circle.setAttribute("fill", "transparent");
-  circle.setAttribute("fill", "#C2C2C2");
+  circle.setAttribute("fill", "#616161");
+  // circle.setAttribute("fill", "white");
   // circle.setAttribute("stroke", "black");
 
   svg.appendChild(circle);
@@ -40,8 +44,8 @@ function initSetting() {
   speedX = 0.5;
 
   const dot_co = document.getElementById("dot-co"); // tail point
-  dot_co.setAttribute("cx", 500);
-  dot_co.setAttribute("cy", 400);
+  dot_co.setAttribute("cx", startCX);
+  dot_co.setAttribute("cy", startCY);
 }
 
 function moveCircle() {
@@ -50,10 +54,10 @@ function moveCircle() {
   frameCount++;
 
   const a = 0.005;
-  const startX = 500;
+  const startX = startCX;
 
   let x = parseFloat(circle.getAttribute("cx")) + speedX;
-  let y = 400 - a * (x - startX) ** 2;
+  let y = startCY - a * (x - startX) ** 2;
 
   circle.setAttribute("cx", x);
   circle.setAttribute("cy", y);
@@ -66,7 +70,7 @@ function moveCircle() {
     return;
   }
 
-  if (x > 630) {
+  if (x > startCX + 100) {
     // free circle from this point
     speedX = 2;
     cancelAnimationFrame(blowReq);

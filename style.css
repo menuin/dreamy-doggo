@@ -12,3 +12,15 @@ circle {
 .dot {
   opacity: 0;
 }
+
+svg {
+  z-index: 10;
+  opacity: 0.3;
+}
+img {
+  width: 900px;
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+  z-index: -1;
+}
