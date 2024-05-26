@@ -5,6 +5,7 @@ let freeReq; // free tail animation
 let frameCount = 0; // used for calculating control point
 
 let controlRYvar = 20;
+let speedX = 0.5;
 
 document.addEventListener("DOMContentLoaded", () => {
   drawCircle();
@@ -36,6 +37,7 @@ function drawCircle() {
 }
 function initSetting() {
   controlRYvar = 20;
+  speedX = 0.5;
 
   const dot_co = document.getElementById("dot-co"); // tail point
   dot_co.setAttribute("cx", 500);
@@ -50,7 +52,7 @@ function moveCircle() {
   const a = 0.005;
   const startX = 500;
 
-  let x = parseFloat(circle.getAttribute("cx")) + 0.5;
+  let x = parseFloat(circle.getAttribute("cx")) + speedX;
   let y = 400 - a * (x - startX) ** 2;
 
   circle.setAttribute("cx", x);
@@ -59,6 +61,7 @@ function moveCircle() {
   drawTail(frameCount);
 
   if (x > 630) {
+    speedX = 2;
     cancelAnimationFrame(blowReq);
     freeCircle();
   }
