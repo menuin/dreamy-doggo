@@ -7,10 +7,11 @@ let frameCount = 0; // used for calculating control point
 let controlRYvar = 20;
 let speedX = 0.5;
 
-const startCX = 780;
-const startCY = 520;
+const startCX = 810;
+const startCY = 460;
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
 });
 
@@ -28,7 +29,7 @@ function drawCircle() {
   circle.setAttribute("cy", startCY); // inital center coordinate y
   circle.setAttribute("r", "0"); // initial radius
   // circle.setAttribute("fill", "transparent");
-  circle.setAttribute("fill", "#616161");
+  circle.setAttribute("fill", "#F33D3D");
   // circle.setAttribute("fill", "white");
   // circle.setAttribute("stroke", "black");
 

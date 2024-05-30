@@ -7,10 +7,12 @@
     <title>Interactive Circle</title>
   </head>
   <body>
-    <img src="./IMG_0508.jpg" />
-    <svg id="svg" width="100%" height="100%">
-      <!-- Circle element -->
-      <!-- <circle
+    <div class="container">
+      <img src="./IMG_0511.png" id="image" />
+
+      <svg id="svg" width="100%" height="100%">
+        <!-- Circle element -->
+        <!-- <circle
         id="circle"
         cx="500"
         cy="400"
@@ -18,42 +20,42 @@
         fill="transparent"
         stroke="black"
       /> -->
-      <!-- Dots -->
-      <circle
-        id="dot-co"
-        class="dot circle-out"
-        cx="780"
-        cy="520"
-        r="5"
-        fill="green"
-      />
-      <circle
-        id="dot-cr"
-        class="dot circle-right"
-        cx="0"
-        cy="0"
-        r="5"
-        fill="red"
-      />
-      <circle
-        id="dot-cl"
-        class="dot circle-left"
-        cx="0"
-        cy="0"
-        r="5"
-        fill="yellow"
-      />
+        <!-- Dots -->
+        <circle
+          id="dot-co"
+          class="dot circle-out"
+          cx="810"
+          cy="460"
+          r="5"
+          fill="green"
+        />
+        <circle
+          id="dot-cr"
+          class="dot circle-right"
+          cx="0"
+          cy="0"
+          r="5"
+          fill="red"
+        />
+        <circle
+          id="dot-cl"
+          class="dot circle-left"
+          cx="0"
+          cy="0"
+          r="5"
+          fill="yellow"
+        />
 
-      <!-- Tail composition -->
-      <path id="tail-l" fill="none" stroke="none" stroke-width="2" />
-      <path id="tail-r" fill="none" stroke="none" stroke-width="2" />
-      <path id="tail-assist" fill="none" stroke="none" stroke-width="2" />
+        <!-- Tail composition -->
+        <path id="tail-l" fill="none" stroke="none" stroke-width="2" />
+        <path id="tail-r" fill="none" stroke="none" stroke-width="2" />
+        <path id="tail-assist" fill="none" stroke="none" stroke-width="2" />
 
-      <!-- Filled shape -->
-      <!-- <path id="tail-filled" fill="white" /> -->
-      <path id="tail-filled" fill="#616161" />
-    </svg>
-
+        <!-- Filled shape -->
+        <!-- <path id="tail-filled" fill="white" /> -->
+        <path id="tail-filled" fill="#F33D3D" />
+      </svg>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
