@@ -7,8 +7,6 @@ body {
 }
 .container {
   height: 100%;
-  /* background-color: #f8ddd8; */
-  /* z-index: -1; */
 }
 circle {
   cursor: pointer;
@@ -22,12 +20,11 @@ svg {
   z-index: 10;
   opacity: 0.3;
 }
+
 img {
-  /* width: 1550px; */
-  /* width: 1000px; */
-  min-width: 100%;
+  left: 0px;
   position: absolute;
   bottom: 0px;
-  /* left: 100px; */
   z-index: -1;
+  width: 1550px;
 }

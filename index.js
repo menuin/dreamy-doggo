@@ -7,11 +7,16 @@ let frameCount = 0; // used for calculating control point
 let controlRYvar = 20;
 let speedX = 0.5;
 
-const startCX = 810;
-const startCY = 460;
+let startCX = 820;
+let startCY = 460;
 
+const startCYoffset = 235;
+
+document.addEventListener("resize", () => {
+  startCY = window.innerHeight - startCYoffset;
+});
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("image").style.width = window.innerWidth + "px";
+  // document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
 });
 
@@ -29,7 +34,7 @@ function drawCircle() {
   circle.setAttribute("cy", startCY); // inital center coordinate y
   circle.setAttribute("r", "0"); // initial radius
   // circle.setAttribute("fill", "transparent");
-  circle.setAttribute("fill", "#F33D3D");
+  circle.setAttribute("fill", "#F84317");
   // circle.setAttribute("fill", "white");
   // circle.setAttribute("stroke", "black");
 
@@ -43,6 +48,8 @@ function drawCircle() {
 function initSetting() {
   controlRYvar = 20;
   speedX = 0.5;
+
+  startCY = window.innerHeight - startCYoffset;
 
   const dot_co = document.getElementById("dot-co"); // tail point
   dot_co.setAttribute("cx", startCX);
