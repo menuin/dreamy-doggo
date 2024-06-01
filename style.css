@@ -23,7 +23,7 @@ svg {
   opacity: 0.3;
 }
 
-img {
+#main-image {
   left: 0px;
   position: absolute;
   bottom: 0px;
@@ -56,7 +56,8 @@ img {
 }
 
 .stick {
-  background-color: #fc131d;
+  /* background-color: #fc131d; */
+  background: linear-gradient(#fc131d, #ff5b62);
   height: 13px; /* update this when changing the stick container size */
 }
 
@@ -99,5 +100,35 @@ img {
   }
   100% {
     height: 0px;
+  }
+}
+
+.info-container {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+
+  z-index: 4;
+
+  .photo {
+    width: 70px;
+    height: 90px;
+    background-color: #fff3f3;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    cursor: pointer;
+
+    &:hover {
+      transform: rotate(10deg);
+      transition: transform 0.5s ease;
+    }
+
+    #photo-image {
+      width: 55px;
+      margin-top: 7px;
+    }
   }
 }
