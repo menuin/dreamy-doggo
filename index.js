@@ -40,7 +40,7 @@ function drawCircle() {
 
   svg.appendChild(circle);
 
-  circle.addEventListener("click", popCircle);
+  circle.addEventListener("click", (e) => popCircle(e));
 
   moveCircle();
   blowCircle();
@@ -183,7 +183,10 @@ function freeCircle() {
   }
 }
 
-function popCircle() {
+function popCircle(e) {
+  if (e) {
+    drawStickEffect(e.clientX, e.clientY);
+  }
   const circle = document.getElementById("circle");
   circle.remove();
 
@@ -198,6 +201,24 @@ function popCircle() {
   }, 800); // bubble generated after timeout
 
   cancelAnimationFrame(moveReq);
+}
+
+function drawStickEffect(centerX, centerY) {
+  const stickContainer = document.getElementById("sticks");
+  stickContainer.style.opacity = "1";
+  /* update this when changing the stick container size */
+  stickContainer.style.left = centerX - 25 + "px";
+  stickContainer.style.top = centerY - 25 + "px";
+
+  const sticks = document.querySelectorAll(".stick");
+  sticks.forEach((stick) => {
+    stick.style.animation = "stickAnimation 0.5s forwards";
+
+    setTimeout(() => {
+      stick.style.animation = "";
+      stickContainer.style.opacity = "0";
+    }, 500);
+  });
 }
 
 function removeTail() {
