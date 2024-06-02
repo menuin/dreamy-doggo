@@ -105,13 +105,14 @@ svg {
 
 .photo-container {
   position: absolute;
-  top: 30px;
-  right: -320px;
-  transform: rotate(-30deg);
+
+  bottom: -340px;
+  right: 50px;
+  transform: rotate(-5deg);
 
   z-index: 5;
 
-  transition: right 1s ease, top 1s ease, transform 1s ease;
+  transition: right 1s ease, bottom 1s ease, transform 1s ease;
 
   .photo {
     width: 300px;
@@ -138,8 +139,7 @@ svg {
       color: #f53419;
 
       position: absolute;
-      /* top: 30px; */
-      bottom: 60px;
+      bottom: 45px;
       transform: rotate(10deg);
     }
     .polaroid-desc2 {

@@ -244,14 +244,14 @@ function showInfo() {
   const photoContainer = document.getElementById("polaroid-container");
 
   if (isPolaroidOpen) {
-    photoContainer.style.right = "-320px";
-    photoContainer.style.top = "30px";
-    photoContainer.style.transform = "rotate(-30deg)";
+    photoContainer.style.right = "50px";
+    photoContainer.style.bottom = "-340px";
+    photoContainer.style.transform = "rotate(-5deg)";
 
     screenCover.style.opacity = "0";
   } else {
     photoContainer.style.right = "150px";
-    photoContainer.style.top = "200px";
+    photoContainer.style.bottom = "180px";
     photoContainer.style.transform = "rotate(10deg)";
 
     screenCover.style.opacity = "0.8";
