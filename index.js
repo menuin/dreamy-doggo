@@ -12,12 +12,18 @@ let startCY = 460;
 
 const startCYoffset = 235;
 
+let isPolaroidOpen = false;
+
 document.addEventListener("resize", () => {
   startCY = window.innerHeight - startCYoffset;
 });
 document.addEventListener("DOMContentLoaded", () => {
   // document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
+
+  document
+    .getElementById("polaroid-container")
+    .addEventListener("click", showInfo);
 });
 
 function drawCircle() {
@@ -231,4 +237,25 @@ function removeTail() {
   tail_r.setAttribute("d", "");
   tail_assist.setAttribute("d", "");
   tail_filled.setAttribute("d", "");
+}
+
+function showInfo() {
+  const screenCover = document.getElementById("screen-cover");
+  const photoContainer = document.getElementById("polaroid-container");
+
+  if (isPolaroidOpen) {
+    photoContainer.style.right = "-320px";
+    photoContainer.style.top = "30px";
+    photoContainer.style.transform = "rotate(-30deg)";
+
+    screenCover.style.opacity = "0";
+  } else {
+    photoContainer.style.right = "150px";
+    photoContainer.style.top = "200px";
+    photoContainer.style.transform = "rotate(10deg)";
+
+    screenCover.style.opacity = "0.8";
+  }
+
+  isPolaroidOpen = !isPolaroidOpen;
 }

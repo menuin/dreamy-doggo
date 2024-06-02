@@ -4,10 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
     <title>Interactive Circle</title>
   </head>
   <body>
     <div class="container">
+      <div class="screen-cover" id="screen-cover"></div>
+
       <img src="./IMG_0511.png" id="main-image" />
 
       <div class="stick-container" id="sticks">
@@ -67,9 +75,13 @@
         <path id="tail-filled" fill="#F84317" />
       </svg>
 
-      <div class="info-container">
-        <div class="photo">
+      <div class="photo-container" id="polaroid-container">
+        <div class="photo" id="polaroid">
           <img src="./IMG_3825.png" id="photo-image" />
+          <div class="polaroid-desc1">MR. HOCKEY</div>
+          <div class="polaroid-desc2">
+            A cranky, antisocial old man <br />but he's still adorable !
+          </div>
         </div>
       </div>
     </div>
