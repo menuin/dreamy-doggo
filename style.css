@@ -4,7 +4,8 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #f8ddd8;
+  /* background-color: #f8ddd8; */
+  background-color: #fff3f1;
 }
 .container {
   height: 100%;
@@ -29,6 +30,15 @@ svg {
   bottom: 0px;
   z-index: 1;
   width: 1550px;
+}
+
+#sub-image {
+  position: absolute;
+  left: 1100px;
+  bottom: 120px;
+  z-index: 3;
+  width: 150px;
+  cursor: pointer;
 }
 
 .stick-container {
@@ -106,7 +116,7 @@ svg {
 .photo-container {
   position: absolute;
 
-  bottom: -340px;
+  bottom: -400px;
   right: 50px;
   transform: rotate(-5deg);
 
@@ -164,4 +174,23 @@ svg {
   pointer-events: none;
 
   transition: opacity 0.3s ease;
+}
+
+.desc-container {
+  position: absolute;
+  left: 200px;
+  top: 300px;
+
+  font-family: "Gochi Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+
+  color: white;
+
+  z-index: 5;
+
+  span {
+    font-size: 30px;
+  }
 }

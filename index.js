@@ -21,9 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
 
+  document.getElementById("sub-image").addEventListener("click", toggleInfo);
   document
     .getElementById("polaroid-container")
-    .addEventListener("click", showInfo);
+    .addEventListener("click", toggleInfo);
 });
 
 function drawCircle() {
@@ -176,8 +177,8 @@ function freeCircle() {
       parseFloat(dot_cl.getAttribute("cy"))) /
     2;
 
-  const next_tail_x = parseFloat(dot_co.getAttribute("cx")) + 10;
-  const next_tail_y = parseFloat(dot_co.getAttribute("cy")) - 10;
+  const next_tail_x = parseFloat(dot_co.getAttribute("cx")) + 7;
+  const next_tail_y = parseFloat(dot_co.getAttribute("cy")) - 7;
   controlRYvar -= 1;
 
   dot_co.setAttribute("cx", next_tail_x);
@@ -239,22 +240,24 @@ function removeTail() {
   tail_filled.setAttribute("d", "");
 }
 
-function showInfo() {
+function toggleInfo() {
   const screenCover = document.getElementById("screen-cover");
   const photoContainer = document.getElementById("polaroid-container");
 
   if (isPolaroidOpen) {
     photoContainer.style.right = "50px";
-    photoContainer.style.bottom = "-340px";
+    photoContainer.style.bottom = "-400px";
     photoContainer.style.transform = "rotate(-5deg)";
 
     screenCover.style.opacity = "0";
+    screenCover.style.pointerEvents = "none";
   } else {
-    photoContainer.style.right = "150px";
+    photoContainer.style.right = "180px";
     photoContainer.style.bottom = "180px";
     photoContainer.style.transform = "rotate(10deg)";
 
     screenCover.style.opacity = "0.8";
+    screenCover.style.pointerEvents = "auto";
   }
 
   isPolaroidOpen = !isPolaroidOpen;
