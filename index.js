@@ -243,6 +243,7 @@ function removeTail() {
 function toggleInfo() {
   const screenCover = document.getElementById("screen-cover");
   const photoContainer = document.getElementById("polaroid-container");
+  const infoDesc = document.getElementById("desc");
 
   if (isPolaroidOpen) {
     photoContainer.style.right = "50px";
@@ -251,6 +252,8 @@ function toggleInfo() {
 
     screenCover.style.opacity = "0";
     screenCover.style.pointerEvents = "none";
+
+    infoDesc.style.opacity = "0";
   } else {
     photoContainer.style.right = "180px";
     photoContainer.style.bottom = "180px";
@@ -258,6 +261,8 @@ function toggleInfo() {
 
     screenCover.style.opacity = "0.8";
     screenCover.style.pointerEvents = "auto";
+
+    infoDesc.style.opacity = "1";
   }
 
   isPolaroidOpen = !isPolaroidOpen;
