@@ -17,16 +17,12 @@ let isPolaroidOpen = false;
 window.addEventListener("resize", () => {
   startCY = window.innerHeight - startCYoffset;
 
-  const content = document.getElementById("content");
-
-  if (window.innerWidth <= 1200) {
-    content.style.display = "none";
-  } else {
-    content.style.display = "block";
-  }
+  checkScreenSize();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  checkScreenSize();
+
   // document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
 
@@ -275,4 +271,14 @@ function toggleInfo() {
   }
 
   isPolaroidOpen = !isPolaroidOpen;
+}
+
+function checkScreenSize() {
+  const content = document.getElementById("content");
+
+  if (window.innerWidth <= 1200) {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
 }
