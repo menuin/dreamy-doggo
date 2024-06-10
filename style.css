@@ -9,6 +9,8 @@ body {
 }
 .container {
   height: 100%;
+
+  overflow: hidden;
 }
 circle {
   cursor: pointer;

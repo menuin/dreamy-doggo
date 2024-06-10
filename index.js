@@ -14,9 +14,18 @@ const startCYoffset = 235;
 
 let isPolaroidOpen = false;
 
-document.addEventListener("resize", () => {
+window.addEventListener("resize", () => {
   startCY = window.innerHeight - startCYoffset;
+
+  const content = document.getElementById("content");
+
+  if (window.innerWidth <= 1200) {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   // document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
