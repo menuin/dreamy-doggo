@@ -275,10 +275,13 @@ function toggleInfo() {
 
 function checkScreenSize() {
   const content = document.getElementById("content");
+  const noContent = document.getElementById("no-content");
 
-  if (window.innerWidth <= 1200) {
+  if (window.innerWidth <= 1100) {
     content.style.display = "none";
+    noContent.style.display = "block";
   } else {
     content.style.display = "block";
+    noContent.style.display = "none";
   }
 }
