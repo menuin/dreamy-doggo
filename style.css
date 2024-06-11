@@ -31,17 +31,17 @@ svg {
 }
 
 #main-image {
-  left: 0px;
+  right: 30%;
   position: absolute;
   bottom: 0px;
   z-index: 1;
-  width: 1550px;
+  width: 1000px;
 }
 
 #sub-image {
   position: absolute;
-  left: 1100px;
-  bottom: 120px;
+  right: 10%;
+  bottom: 70px;
   z-index: 3;
   width: 150px;
   cursor: pointer;
@@ -197,7 +197,11 @@ svg {
 }
 
 #no-content {
+  position: absolute;
+  box-sizing: border-box;
+
   text-align: center;
+  width: 100%;
   height: 100%;
   padding: 50px 30px 0px;
   font-size: 20px;

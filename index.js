@@ -7,21 +7,24 @@ let frameCount = 0; // used for calculating control point
 let controlRYvar = 20;
 let speedX = 0.5;
 
-let startCX = 820;
-let startCY = 460;
+let startCX = 0;
+let startCY = 0;
 
-const startCYoffset = 235;
+const startCYoffset = 190;
 
 let isPolaroidOpen = false;
 
 window.addEventListener("resize", () => {
   startCY = window.innerHeight - startCYoffset;
 
-  checkScreenSize();
+  checkScreenSizeAlert();
+  calculateImageCirclePosition();
+  popCircle(); // remove circle when resizing window
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  checkScreenSize();
+  checkScreenSizeAlert();
+  calculateImageCirclePosition();
 
   // document.getElementById("image").style.width = window.innerWidth + "px";
   drawCircle();
@@ -273,15 +276,19 @@ function toggleInfo() {
   isPolaroidOpen = !isPolaroidOpen;
 }
 
-function checkScreenSize() {
-  const content = document.getElementById("content");
-  const noContent = document.getElementById("no-content");
+function checkScreenSizeAlert() {
+  const sizeAlert = document.getElementById("no-content");
 
   if (window.innerWidth <= 1100) {
-    content.style.display = "none";
-    noContent.style.display = "block";
+    sizeAlert.style.display = "block";
   } else {
-    content.style.display = "block";
-    noContent.style.display = "none";
+    sizeAlert.style.display = "none";
   }
+}
+
+function calculateImageCirclePosition() {
+  document.getElementById("main-image").style.right =
+    window.innerWidth * 0.3 + "px";
+  startCX = window.innerWidth * 0.7 - 220;
+  console.log(window.innerWidth - startCX);
 }
