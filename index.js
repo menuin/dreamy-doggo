@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("polaroid-container")
     .addEventListener("click", toggleInfo);
+
+  setSnsLink();
 });
 
 function drawCircle() {
@@ -254,8 +256,8 @@ function toggleInfo() {
   const infoDesc = document.getElementById("desc");
 
   if (isPolaroidOpen) {
-    photoContainer.style.right = "50px";
-    photoContainer.style.bottom = "-400px";
+    photoContainer.style.right = "20%";
+    photoContainer.style.top = "-400px";
     photoContainer.style.transform = "rotate(-5deg)";
 
     screenCover.style.opacity = "0";
@@ -263,8 +265,8 @@ function toggleInfo() {
 
     infoDesc.style.opacity = "0";
   } else {
-    photoContainer.style.right = "180px";
-    photoContainer.style.bottom = "180px";
+    photoContainer.style.right = "20%";
+    photoContainer.style.top = "150px";
     photoContainer.style.transform = "rotate(10deg)";
 
     screenCover.style.opacity = "0.8";
@@ -291,4 +293,14 @@ function calculateImageCirclePosition() {
     window.innerWidth * 0.3 + "px";
   startCX = window.innerWidth * 0.7 - 220;
   console.log(window.innerWidth - startCX);
+}
+
+function setSnsLink() {
+  document.getElementById("github-link").addEventListener("click", () => {
+    window.open("https://github.com/menuin/dreamy-doggo");
+  });
+
+  document.getElementById("ig-link").addEventListener("click", () => {
+    window.open("https://www.instagram.com/menuinart");
+  });
 }
