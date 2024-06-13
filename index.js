@@ -256,23 +256,13 @@ function toggleInfo() {
   const infoDesc = document.getElementById("desc");
 
   if (isPolaroidOpen) {
-    photoContainer.style.right = "20%";
-    photoContainer.style.top = "-400px";
-    photoContainer.style.transform = "rotate(-5deg)";
-
-    screenCover.style.opacity = "0";
-    screenCover.style.pointerEvents = "none";
-
-    infoDesc.style.opacity = "0";
+    photoContainer.classList.remove("open");
+    screenCover.classList.remove("open");
+    infoDesc.classList.remove("open");
   } else {
-    photoContainer.style.right = "20%";
-    photoContainer.style.top = "150px";
-    photoContainer.style.transform = "rotate(10deg)";
-
-    screenCover.style.opacity = "0.8";
-    screenCover.style.pointerEvents = "auto";
-
-    infoDesc.style.opacity = "1";
+    photoContainer.classList.add("open");
+    screenCover.classList.add("open");
+    infoDesc.classList.add("open");
   }
 
   isPolaroidOpen = !isPolaroidOpen;
@@ -292,7 +282,6 @@ function calculateImageCirclePosition() {
   document.getElementById("main-image").style.right =
     window.innerWidth * 0.3 + "px";
   startCX = window.innerWidth * 0.7 - 220;
-  console.log(window.innerWidth - startCX);
 }
 
 function setSnsLink() {

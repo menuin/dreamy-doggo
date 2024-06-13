@@ -133,6 +133,7 @@ svg {
   .photo {
     width: 300px;
     height: 380px;
+
     background-color: #fff3f3;
 
     display: flex;
@@ -146,7 +147,7 @@ svg {
       margin-top: 10px;
     }
 
-    .polaroid-desc1 {
+    #polaroid-desc1 {
       font-size: 50px;
       color: #f53419;
 
@@ -154,13 +155,19 @@ svg {
       bottom: 45px;
       transform: rotate(10deg);
     }
-    .polaroid-desc2 {
+    #polaroid-desc2 {
       font-size: 22px;
       letter-spacing: -1px;
 
       position: absolute;
       bottom: 10px;
     }
+  }
+
+  &.open {
+    right: 20%;
+    top: 150px;
+    transform: rotate(10deg);
   }
 }
 
@@ -176,12 +183,18 @@ svg {
   pointer-events: none;
 
   transition: opacity 0.3s ease;
+
+  &.open {
+    opacity: 0.8;
+    pointer-events: auto;
+  }
 }
 
 .desc-container {
   position: absolute;
   left: 10%;
   top: 300px;
+  width: 500px;
 
   font-size: 20px;
 
@@ -191,8 +204,48 @@ svg {
 
   opacity: 0;
 
+  pointer-events: none;
+
   span {
     font-size: 30px;
+  }
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .photo-container {
+    .photo {
+      width: 200px;
+      height: 260px;
+
+      #photo-image {
+        width: 180px;
+      }
+
+      #polaroid-desc1 {
+        font-size: 30px;
+      }
+
+      #polaroid-desc2 {
+        font-size: 18px;
+      }
+    }
+
+    &.open {
+      top: 100px;
+    }
+  }
+  .desc-container {
+    top: auto;
+    left: auto;
+    bottom: 30px;
+    width: 100%;
+    padding: 0px 30px;
+    box-sizing: border-box;
   }
 }
 
