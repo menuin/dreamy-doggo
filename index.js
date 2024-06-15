@@ -12,6 +12,8 @@ let startCY = 0;
 
 const startCYoffset = 190;
 
+const minScreenWidth = 700;
+
 let isPolaroidOpen = false;
 
 window.addEventListener("resize", () => {
@@ -271,7 +273,7 @@ function toggleInfo() {
 function checkScreenSizeAlert() {
   const sizeAlert = document.getElementById("no-content");
 
-  if (window.innerWidth <= 1100) {
+  if (window.innerWidth <= minScreenWidth) {
     sizeAlert.style.display = "block";
   } else {
     sizeAlert.style.display = "none";
