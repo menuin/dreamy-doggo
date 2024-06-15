@@ -53,9 +53,8 @@ function drawCircle() {
   circle.setAttribute("cy", startCY); // inital center coordinate y
   circle.setAttribute("r", "0"); // initial radius
   // circle.setAttribute("fill", "transparent");
-  circle.setAttribute("fill", "#F84317");
-  // circle.setAttribute("fill", "white");
   // circle.setAttribute("stroke", "black");
+  circle.setAttribute("fill", "#F84317");
 
   svg.appendChild(circle);
 
